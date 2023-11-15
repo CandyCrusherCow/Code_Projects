@@ -7,7 +7,7 @@ let word =document.querySelector('input').value
 .then(res => res.json())
 .then (data => {console.log(data.docs[0])
   document.querySelector('h2').innerText = data.docs[0].title
-  document.querySelector('img'). src = `https://covers.openlibrary.org/b/isbn/${data.docs[0].isbn[0]}-S.jpg`
+  document.querySelector('img'). src = `https://covers.openlibrary.org/b/isbn/${data.docs[0].isbn[0]}-L.jpg`
  document.querySelector('h3').innerText = data.docs[0].author_name
 })
 .catch(err => {
