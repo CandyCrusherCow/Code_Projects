@@ -1,5 +1,11 @@
 document.querySelector('button').addEventListener('click',search)
 
+const ulConst =document.querySelector('ul')
+
+for(i=0;i<ulConst.children.length; i++){
+    ulConst.removeChild(ulConst.childNodes[0])
+}
+
 function search (){
 let word =document.querySelector('input').value
 
