@@ -41,3 +41,10 @@ function sortCards(array){
       }
       return array
       }
+
+      //alternative solution 
+
+      function sortCards(array){
+        const sorted = 'A23456789TJQK'
+        return array.sort((a,b)=> sorted.indexOf(a)-sorted.indexOf(b))
+        }
