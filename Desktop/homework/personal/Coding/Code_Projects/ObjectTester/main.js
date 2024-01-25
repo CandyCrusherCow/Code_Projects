@@ -18,26 +18,32 @@ const bob = {
 //   let values =[]
 //   let result = 
   //let  = object[Object.keys(series)].filter((v)=> v===Number(v)).reduce((acc,curr)=>acc+curr,0)
-let newArr = []
-  Object.keys(bob.series).forEach((arr)=>{
-  console.log(arr)
-  console.log(bob.series[arr].filter((v)=> v===Number(v)?newArr.push(v):false))
-  console.log(newArr.reduce((acc,curr)=>acc+curr,0))
-  })
-  
-//   function objConcat(objects) {
-//     return Object.assign({}, ...objects);
-//   }
-//   console.log(objConcat(Object.keys(bob.series).forEach((arr)=>{
-//     console.log(arr)
-//     console.log(bob.series[arr].filter((v)=> v===Number(v)))
-// })))
-  
-  //arr.filter((v)=> v===Number(v)).reduce((acc,curr)=>acc+curr,0)
-  
 
-  //console.log(result)
+
+  //Solution 1
+// let newArr = []
+//   Object.keys(bob.series).forEach((arr)=>{
+//   console.log(arr)
+//   console.log(bob.series[arr].filter((v)=> v===Number(v)?newArr.push(v):false))
+//   console.log(newArr.reduce((acc,curr)=>acc+curr,0))
+//   })
   
+//obtain series
+  let seriesObject = bob.series
+console.log(seriesObject)
+//obtain array within series and concat arrays 
+let newArr = [];
+
+for(let key in seriesObject){
+    console.log(seriesObject[key])
+newArr = newArr.concat(...seriesObject[key])
+}
+console.log(newArr)
+//filter & sum array
+  let sum =newArr.reduce((acc,curr)=>{
+    return (Number(curr))? acc+curr:acc},0)
+
+  console.log(sum)
   
   //Remove all duplicate jobs and return 2 objects with unique jobs
   
