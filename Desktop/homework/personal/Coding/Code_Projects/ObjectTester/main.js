@@ -63,7 +63,9 @@ console.log(arr)
   // Log 
   //console.log(message)
 
-  let nums = [1,2,3,4,5]
+
+//Create an Array and sum the values using forEach , map ,and reduce 
+let nums = [1,2,3,4,5]
 
 let forEachTotal = 0
 nums.forEach((value)=>forEachTotal+=value)
@@ -75,6 +77,7 @@ nums.forEach((value)=>forEachTotal+=value)
 
  console.log(nums.reduce((acc,curr)=>acc+curr,0))
 
+ //Create an Object, Display window in the console log and how many parts  
  let car ={
     mfg:"Honda",
     parts:['doors','window','wheel','steeringWheel'],
@@ -84,3 +87,22 @@ nums.forEach((value)=>forEachTotal+=value)
  console.log(car.parts[1], car.parts.length )
 
  console.log(Object.keys(car))
+
+ // Use Map to create an object of vaule pairs 
+
+ let bike = new Map()
+
+ bike.set('parts',['wheel','handleBars','kickStand'])
+ bike.set('owner', 'Chris')
+ bike.set('color','blue')
+ console.log(bike.get('owner'))
+ console.log(bike.size)
+ console.log(bike.entries())
+ console.log(bike.get('color'))
+ console.log(bike.get('parts'))
+ console.log(bike.has('parts'))
+ console.log(bike.keys())
+ console.log(bike.values())
+
+
+
