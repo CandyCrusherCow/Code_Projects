@@ -56,8 +56,26 @@ console.log(arr)
  })
   
   //Give me the total number of items on hand
-  
-  
+  //First will get items obj
+  let itemObj = bob.items
+  console.log(itemObj)
+  let itemNums = []
+  //then into the arr, loop through each object within the array 
+for(let obj in itemObj){
+    console.log(itemObj[obj])
+    let objectItemList =itemObj[obj]
+   console.log (Object.values(objectItemList))
+    //loop through each key value pair within the object
+    let objectItemListValues = Object.values(objectItemList)
+    for(let val in objectItemListValues){
+        console.log(objectItemListValues[val])
+        itemNums.push(Object.values(objectItemListValues[val]))
+    }
+}
+itemNums = itemNums[0].concat(...itemNums.slice(1))
+itemNums=itemNums.reduce((acc,curr)=>acc+curr,0)
+console.log(itemNums)
+
   
   
   // Log 
