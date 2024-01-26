@@ -46,6 +46,14 @@ console.log(newArr)
   console.log(sum)
   
   //Remove all duplicate jobs and return 2 objects with unique jobs
+
+
+ let jobsObj = bob.jobs
+ Object.keys(jobsObj).forEach((arr)=>{
+   console.log(arr)
+arr = new Set(jobsObj[arr])
+console.log(arr)
+ })
   
   //Give me the total number of items on hand
   
@@ -53,4 +61,26 @@ console.log(newArr)
   
   
   // Log 
-  console.log(message)
+  //console.log(message)
+
+  let nums = [1,2,3,4,5]
+
+let forEachTotal = 0
+nums.forEach((value)=>forEachTotal+=value)
+ console.log(forEachTotal)
+
+ let mapTotal=0
+ nums.map((value)=>mapTotal+=value)
+ console.log(mapTotal)
+
+ console.log(nums.reduce((acc,curr)=>acc+curr,0))
+
+ let car ={
+    mfg:"Honda",
+    parts:['doors','window','wheel','steeringWheel'],
+    color:'Black',
+ }
+
+ console.log(car.parts[1], car.parts.length )
+
+ console.log(Object.keys(car))
