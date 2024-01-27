@@ -7,7 +7,7 @@ const bob = {
       developer:['jr.developer', 'developer','sr.developer','developer'],
       consultant: ['consutant I', 'consutant II','consutant I','consutant III'],
     },
-    items: [{123:{'location 1': 5, 'location 2': 6}},{234:{'location 1': 10, 'location 2': 15}},{235:{'location 1': 15, 'location 2': 3}},{'ipad':{'location 1': 2, 'location 2': 3}}]
+    items: [{123:{'location 1': 5, 'location 2': 6}},{234:{'location 1': 10, 'location 2': 15}},{235:{'location 1': 15, 'location 2': 3,'location':7}},{'ipad':{'location 1': 2, 'location 2': 3}}]
   }
   
   // Update header text
@@ -159,6 +159,8 @@ let forProduct = 1
  str = str.replaceAll('o','x')
 
  console.log(str)
+
+ //
 
  let mfg= 'Ford'
 
