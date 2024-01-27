@@ -123,5 +123,58 @@ nums.forEach((value)=>forEachTotal+=value)
  console.log(bike.keys())
  console.log(bike.values())
 
+ //Make Object
 
+ let cars={
+    parts:['wheel','steeringWheel','window'],
+    color:'Red'
+ }
 
+ //unique parts in car 
+
+ let uniqueParts = new Set(Object.values(cars.parts))
+ console.log(uniqueParts)
+ console.log(uniqueParts.size)
+
+ //make arr
+
+ let arrOfNums = [5,4,3,2,1]
+
+ console.log('reduce',arrOfNums.reduce((acc,curr)=>acc*curr,1))
+
+let forProduct = 1
+ for(let i= 0;i<arrOfNums.length;i++){
+ forProduct = forProduct*arrOfNums[i]
+ }
+ console.log('For Loop',forProduct)
+
+ let forEachProduct =1 
+ arrOfNums.forEach((value)=> forEachProduct = forEachProduct*value)
+
+ console.log('ForEach',forEachProduct)
+
+ //
+ let str='The fox jumps over the wall'
+
+ str = str.replaceAll('o','x')
+
+ console.log(str)
+
+ let mfg= 'Ford'
+
+ switch(mfg){
+    case 'Honda':
+        console.log('Great')
+        break;
+    case 'Toyota':
+        console.log('excellent')
+        break;
+    case 'Nissan':
+        console.log('Superb')
+        break;
+    default:
+    console.log('You have no car')
+
+ }
+
+ 
