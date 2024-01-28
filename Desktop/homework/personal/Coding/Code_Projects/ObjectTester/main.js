@@ -153,14 +153,14 @@ let forProduct = 1
 
  console.log('ForEach',forEachProduct)
 
- //
+ // Create a variable called string , then replace all o with x 
  let str='The fox jumps over the wall'
 
  str = str.replaceAll('o','x')
 
  console.log(str)
 
- //
+ //creat a switch case  with these conditions 
 
  let mfg= 'Ford'
 
@@ -178,5 +178,49 @@ let forProduct = 1
     console.log('You have no car')
 
  }
+
+ //Create a Do while loop, while loop and a for loop when the count reaches 10 its stops
+
+ let i=0;
+ do {
+    i++
+    console.log('doWhile','Hello World')
+ } while (i<10);
+
+ j=0
+ while (j<10) {
+    j++
+    console.log('While','Hello World')
+ }
+
+ for(let k=0;k<10;k++){
+    console.log('for','Hello World')
+ }
+ //Create an Object, clone the object 
+
+ let sister={
+    age:27,
+    relationshipStatus:'Taken',
+ }
+
+ let sisterInLaw = new Object();
+ sisterInLaw.age = 10;
+ sisterInLaw.relationshipStatus = 'Single';
+ console.log(sisterInLaw)
+
+ let clone = structuredClone(sister);
+ console.log(clone)
+
+ //create a constructor 
+ class Family{
+    constructor(age,relationshipStatus){
+    this.age = age;
+    this.relationshipStatus =relationshipStatus;
+ }
+}
+
+ let Serra = new Family(10,'single');
+ console.log(Family)
+
 
  
