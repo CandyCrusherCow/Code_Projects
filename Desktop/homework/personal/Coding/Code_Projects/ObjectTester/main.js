@@ -222,5 +222,8 @@ let forProduct = 1
  let Serra = new Family(10,'single');
  console.log(Family)
 
+ for( let key in Serra){
+    console.log(Serra[key])
+ }
 
  
