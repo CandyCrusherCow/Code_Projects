@@ -61,12 +61,52 @@ console.log(itemTotals)
 
 
  //Create a Do while loop, while loop and a for loop when the count reaches 0 its stop
- 
+let i = 10 
+do {
+    console.log('Hello World!')
+    i--
+} while (i>0);
+
+ let j = 10
+while(j>0){
+  j= j-1
+  console.log('while','Hello World!')
+}
+
+for(let k=10;k>0;k=k-1){
+  console.log("For Loop", "Hello World")
+}
+
+
+
 
  //Create an Object, clone the object 
+let bobsBurgers = {
+    'Main Characters':['Tina','Bob','Linda','Gene','Louise'],
+    genre:['comedy','cartoon'],
+    seasons:13,
+    startYear:2011
+}
 
+bobsBurgers.introduction= function(){
+    console.log(`This is a ${this.genre} it has ${this.seasons} seasons, premiered ${this.startYear}`)
+}
 
+bobsBurgers.introduction()
 
  //create a constructor 
 
- 
+ class Family{
+constructor(name,age,nickName,occupation){
+    this.name = name,
+    this.nickName = nickName,
+    this.age = age,
+    this.occupation =occupation
+
+
+}
+ }
+
+ let andrea = new Family ('Andrea',55,'Angie','Unit Clerk')
+
+ console.log(andrea)

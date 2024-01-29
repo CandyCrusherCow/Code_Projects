@@ -193,7 +193,7 @@ let forProduct = 1
     console.log('While','Hello World')
  }
 
- for(let k=0;k<10;k++){
+ for(let k=0;k=10;k++){
     console.log('for','Hello World')
  }
  //Create an Object, clone the object 
