@@ -9,7 +9,29 @@ const bob = {
     },
     items: [{123:{'location 1': 5, 'location 2': 6}},{234:{'location 1': 10, 'location 2': 15}},{235:{'location 1': 15, 'location 2': 3,'location':7}},{'ipad':{'location 1': 2, 'location 2': 3}}]
   }
-  
+  // Summ up how much each item has for ex(123) and has 11 
+  //new object 
+
+  let itemTotals = {
+
+  }
+//first get items property
+let itemObj = bob.items
+console.log(itemObj)
+//loop through array of objects
+for ( let key in itemObj){
+    console.log(itemObj[key])
+    //values of those object 
+    for( let loc in itemObj[key]){
+        console.log(itemObj[key][loc])
+        itemTotals[Object.keys(itemObj[key])] = Object.values(itemObj[key][loc]).reduce((acc,curr)=>acc+curr,0)
+    }
+}
+
+console.log(itemTotals)
+
+//
+
   // Update header text
   //document.querySelector('#header').innerHTML = object['series']['1'][0]
   
@@ -21,7 +43,7 @@ const bob = {
   //Give me the total number of items on hand
   
 
-//Create an Array and sum the values using forEach , map ,and reduce 
+//Create an Array and sum the values using forEach , map, every  ,and reduce 
 
 
  //Create a car Object(literal notation and other one), then clone object, Display window in the console and how many parts  
