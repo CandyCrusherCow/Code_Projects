@@ -52,33 +52,77 @@ console.log(itemTotals)
 
 
  //make arr of Numbers, sort all the numbers from least to most, then subtract them all. using reduce, map and for each 
+let arrNums = [10,563,84,5,17]
 
+arr = arrNums.sort((a,b)=>b-a)
+console.log(arr)
 
+console.log('reduce', arr.reduce((acc,curr,i)=>(i===0?curr:acc-curr),arr[0]))
+
+let mapTotal = arr[0]
+arr.map((val)=> val==arr[0]?mapTotal:mapTotal=mapTotal-val)
+console.log('map',mapTotal)
+
+let everyTotal = arr[0];
+
+arr.every((val)=>val==arr[0]?everyTotal:everyTotal=everyTotal-val)
+
+console.log('every', everyTotal)
  // Create a variable called string , then replace all o with x 
+let string = ' Box fox mox cocx joxc tox'
 
+console.log(string.replaceAll('o','x'))
 
  //creat a switch case  checking the fruit, the cases console logging the name of the fruit 
+ let fruit = 'kiwi'
+switch (fruit) {
+  case 'Banana':
+    console.log(fruit)
+    break;
+
+  default:
+    console.log('That fruit is gross')
+    break;
+}
 
 
  //Create a Do while loop, while loop and a for loop when the count reaches 0 its stop
-let i = 10 
+// let i = 10 
+// do {
+//     console.log('Hello World!')
+//     i--
+// } while (i>0);
+
+//  let j = 10
+// while(j>0){
+//   j= j-1
+//   console.log('while','Hello World!')
+// }
+
+// for(let k=10;k>0;k=k-1){
+//   console.log("For Loop", "Hello World")
+// }
+
+for(let i= 10; i>0; i--){
+  console.log('For Loop','Hello World!')
+}
+
+for(let i=0;i<10;i++){
+  console.log('For Loop','Hello')
+}
+
+let j=10
 do {
-    console.log('Hello World!')
-    i--
-} while (i>0);
+  j--
+  console.log('doWhile','Hello World')
+} while (j>0);
 
- let j = 10
-while(j>0){
-  j= j-1
-  console.log('while','Hello World!')
+let k = 10
+while (k>0) {
+  k--
+  console.log('While','Hello World!')
+  
 }
-
-for(let k=10;k>0;k=k-1){
-  console.log("For Loop", "Hello World")
-}
-
-
-
 
  //Create an Object, clone the object 
 let bobsBurgers = {
