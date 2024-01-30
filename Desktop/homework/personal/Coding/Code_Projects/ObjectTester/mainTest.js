@@ -37,6 +37,19 @@ console.log(itemTotals)
   
   //TASKS
   //Sum up everything in series as long as it is a number
+  //Get into bob series
+let seriesObj=bob.series
+console.log(seriesObj)
+  //concat the 2 arrays 
+  let seriesArr=[]
+for(let arr in seriesObj){
+  console.log(seriesObj[arr])
+  seriesArr = seriesArr.concat(...seriesObj[arr])
+}
+console.log(seriesArr)
+  //filter and  reduce the arrays 
+  let seriesTot = seriesArr.reduce((acc,curr)=> curr!=Number(curr)?acc:acc+curr,0)
+  console.log('series total', seriesTot)
   
   //Remove all duplicate jobs and return 2 objects with unique jobs
  
@@ -44,11 +57,47 @@ console.log(itemTotals)
   
 
 //Create an Array and sum the values using forEach , map, every  ,and reduce 
+let nums = [5,5,5,5,5]
 
+let forEachTotal = 0
+nums.forEach((val)=>forEachTotal+=val)
+console.log('forEach', forEachTotal)
+
+let mapTot = 0
+nums.map((val)=>mapTot += val)
+console.log('map',mapTot)
+
+let everyTot=0
+nums.every((val)=>everyTot+=val)
+console.log('every', everyTot)
+
+
+console.log('reduce',nums.reduce((acc,curr)=>acc+curr,0))
 
  //Create a car Object(literal notation and other one), then clone object, Display window in the console and how many parts  
- 
+ let honda = {
+    color:'Pink',
+    parts:['widow','wheel','tiger']
+ }
+
+ let clone = structuredClone(honda)
+
+ console.log(honda.color)
+console.log(honda.parts[1], honda.parts.length)
  // Use Map to create an object bike, create 3 properties, display the value of each property in console, console how many properties are in the object. check if the bike has parts 
+
+ let bike = new Map();
+
+ bike.set('parts',['wheel','handleBars','brake','stand'])
+ bike.set('color','pink')
+ bike.set('accessories', ['helemt','sparkles'])
+
+ console.log(bike.values())
+ console.log(bike.get('parts'),bike.get('color'),bike.get('accessories'))
+ console.log(bike.has('parts'))
+ console.log(bike.size)
+
+
 
 
  //make arr of Numbers, sort all the numbers from least to most, then subtract them all. using reduce, map and for each 
