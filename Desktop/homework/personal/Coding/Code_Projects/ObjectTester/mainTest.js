@@ -38,13 +38,12 @@ console.log(itemTotals)
   //TASKS
   //Sum up everything in series as long as it is a number
   //Get into bob series
-let seriesObj=bob.series
-console.log(seriesObj)
+
   //concat the 2 arrays 
   let seriesArr=[]
-for(let arr in seriesObj){
-  console.log(seriesObj[arr])
-  seriesArr = seriesArr.concat(...seriesObj[arr])
+for(let arr in bob.series){
+  console.log(bob.series[arr])
+  seriesArr = seriesArr.concat(...bob.series[arr])
 }
 console.log(seriesArr)
   //filter and  reduce the arrays 
