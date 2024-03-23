@@ -352,3 +352,35 @@ obj.invoices.map((invoice)=>{
 
 
 console.log('applyPayment:', applyPayment(customers, payments));
+
+// function applyPayment(customers,payments){
+//   const custWithPay =[];
+//   customers.forEach((obj)=>{
+//  Object.values(obj.invoices).forEach((invoice)=>{
+//  invoice.remain = invoice.amount
+//  console.log("invoice before",invoice)
+//  });
+//   });
+//    customers.forEach((obj)=>{
+//  Object.values(obj.invoices).forEach((invoice)=>{
+ 
+//  for(let i= 0;i<payments.length;i++){
+
+//  if(invoice.doc === payments[i].doc){
+ 
+//  custWithPay.push({doc:invoice.doc,invoiceAmount:invoice.amount,remaingingTot:invoice.remain-payments[i].paymentAmount, paymentAmount:payments[i].paymentAmount})
+//  invoice.custWithPay ={doc:invoice.doc,invoiceAmount:invoice.amount,remaingingTot:invoice.amount-payments[i].paymentAmount, paymentAmount:payments[i].paymentAmount}
+// invoice.remain =invoice.remain-payments[i].paymentAmount
+// console.log("invoice after",invoice)
+//  }
+//  }
+//  });
+//   });
+  
+ 
+//   return custWithPay
+//   }
+ 
+ 
+ 
+//  console.log('applyPayment:', applyPayment(customers, payments));
