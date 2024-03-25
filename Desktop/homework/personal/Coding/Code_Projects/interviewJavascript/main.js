@@ -259,6 +259,27 @@ const payments = [
 
 
 console.log('totalInvoices:', totalInvoices(customers));
+
+  /**
+   * if there are dulicate payments sum them up
+   * @param {payments[]} customers
+   * @return {paymentsSum[]}
+   */
+  function sumPayments(payments){
+    payments.forEach((value,index)=>{
+    let duplicates = payments.filter((payment)=>payment.doc === value.doc)
+    console.log(duplicates)
+    let payment = duplicates.reduce((acc,curr)=>acc+curr.paymentAmount,0)
+    if(duplicates.length>1){
+    payments.splice(index,duplicates.length,{doc:value.doc,paymentAmount:payment})
+    }
+    
+    });
+    return payments
+   
+    }
+   
+   console.log('sumPayments:', sumPayments(payments));
 /**
  * Return all invoices that were created after 1/20/2023.
  * Filter out any invalid dates.
