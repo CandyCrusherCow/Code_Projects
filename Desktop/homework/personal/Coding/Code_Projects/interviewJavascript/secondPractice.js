@@ -289,3 +289,108 @@ console.log(processFinances(financialLedger));
 //     reviewNeeded: true // Expenses exceeded income
 //   }
 // }
+/*
+  Problem: The Puzzling Cipher of Gravity Falls
+  In the town of Gravity Falls, Dipper and Mabel have discovered a cryptic puzzle left behind by the enigmatic Grunkle Stan.
+  Your task is to write a function that deciphers the codes to reveal the hidden messages.
+  You will be given an object 'cipherTexts' with dates as keys, each containing a string encoded with a simple substitution cipher.
+  The 'cipherKey' object provides the mapping of encoded characters to their actual characters.
+  Your function should decode each message and return an object 'decodedMessages' with dates as keys and decoded strings as values.
+  Additionally, identify any messages that contain the word 'treasure' and list the dates in an array 'treasureDates'.
+  The function should return an object with two properties: 'decodedMessages' and 'treasureDates'.
+*/
+
+const cipherTexts = {
+  '07/13': 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt',
+  '08/03': 'R droo vevib xlnnzm gsviv zmw blf droo urihg rm gsv xzxp',
+  // Add more cipher texts as needed
+};
+
+const cipherKey = {
+  'a': 'n', 'b': 'o', 'c': 'p', 'd': 'q', 'e': 'r',
+  'f': 's', 'g': 't', 'h': 'u', 'i': 'v', 'j': 'w',
+  'k': 'x', 'l': 'y', 'm': 'z', 'n': 'a', 'o': 'b',
+  'p': 'c', 'q': 'd', 'r': 'e', 's': 'f', 't': 'g',
+  'u': 'h', 'v': 'i', 'w': 'j', 'x': 'k', 'y': 'l',
+  'z': 'm', // Add more mappings as needed
+  // Remember to include mappings for uppercase letters if needed
+};
+
+function decodeCipher(texts, key) {
+console.log('test',cipherKey['a'])
+  // Your code here
+  const decodedMessages ={}
+  
+  const treasureDates = []
+  Object.keys(texts).forEach((message)=>{
+  let decodedMessage = cipherTexts[message].toLowerCase().split('').map((letter)=>{
+  if(letter !== ' '){
+  return cipherKey[letter]
+  }else{return ' '}
+  }).join('')
+  decodedMessages[message] = decodedMessage
+  if(decodedMessage.includes('treasure')){
+  treasureDates.push({message})
+  }
+  });
+  
+  return [decodedMessages,treasureDates]
+  // Decode each message and identify 'treasure' dates.
+}
+console.log('decode Cipher:', decodeCipher(cipherTexts,cipherKey))
+
+/*
+  Problem: Love Island Matchmaking Algorithm
+  On Love Island, a group of contestants, known as Islanders, must couple up with another Islander to survive and win the prize.
+  Your task is to write a function that determines the compatibility of couples based on their preferences and attributes.
+  You will be given an array of Islanders, each represented as an object with various attributes like name, age, interests, and type (which describes their ideal match).
+  The function should pair Islanders together based on how many interests they share and whether their 'type' matches the other's attributes.
+  The function should return an array of couples, each represented as an object with the names of the two Islanders.
+  Additionally, identify the couple with the highest compatibility score and return their names as the 'topCouple'.
+  The function should return an object with two properties: 'couples' and 'topCouple'.
+*/
+
+const islanders = [
+  { name: 'Amber', age: 25, interests: ['dancing', 'fitness', 'cooking'], type: 'adventurous' },
+  { name: 'Greg', age: 27, interests: ['law', 'rugby', 'poetry'], type: 'intellectual' },
+  { name: 'Molly', age: 22, interests: ['fashion', 'travel', 'blogging'], type: 'creative' },
+  { name: 'Tommy', age: 24, interests: ['boxing', 'fitness', 'dogs'], type: 'sporty' },
+  { name: 'Lucie', age: 21, interests: ['surfing', 'modelling', 'fitness'], type: 'adventurous' },
+  { name: 'Curtis', age: 23, interests: ['dancing', 'cooking', 'fitness'], type: 'caring' },
+  { name: 'Anna', age: 28, interests: ['makeup', 'law', 'fashion'], type: 'intellectual' },
+  { name: 'Jordan', age: 24, interests: ['basketball', 'gaming', 'fashion'], type: 'laid-back' },
+  // Add more islanders as needed
+];
+
+function findLoveIslandCouples(islanders) {
+  const couples =[];
+  const topCouple = []
+  for(let i =0;i<islanders.length;i++){
+  const matches = islanders.filter((islander)=>islander.type===islanders[i].type && islander.name !==islanders[i].name?islander: undefined);
+  let compatabilty =0
+    if(matches[0]){
+  		islanders[i].interests.forEach((intrest)=>{
+      if(matches[0].interests.includes(intrest)){
+      compatabilty += 1 
+      }
+      })
+  topCouple.push({name:islanders[i],score:compatabilty})
+  }
+  
+   // console.log(islanders[i].name + ' matches with ',...matches)
+    let match = [islanders[i].name,matches[0]?matches[0].name:'No Match'].sort();
+ 
+    if( couples.filter((x)=>x[0]===match[0]).length<1 && match[1] !== 'No Match' && match[0] !== 'No Match'){
+    couples.push(match)
+    }
+  }
+  console.log(couples)
+  console.log(topCouple)
+ 
+}
+console.log('findLoves',findLoveIslandCouples(islanders))
+
+// Example usage:
+//const result = findLoveIslandCouples(islanders);
+//console.log(result.couples); // Shows the paired up couples
+//console.log(result.topCouple); // Shows the couple with the highest compatibility score

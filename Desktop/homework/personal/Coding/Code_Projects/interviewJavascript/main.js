@@ -315,19 +315,26 @@ console.log('dateFilter:', dateFilter(customers));
  * @return {{name: string, totalAmount: number, fullyPaid: boolean}[]}
  */
 function customerStatement(customers){
-const statments = [];
- customers.forEach((obj)=>{
- let Total = obj.invoices.reduce((acc,curr)=>acc+curr.amount,0)
- let status = obj.invoices.reduce((acc,curr)=>curr.docStatus === 'unpaid'?acc+1:acc+0,0)
- statments.push({name:obj.name,totalAmount:Total,fullyPaid:status===0?'true':'false'})
- });
- 
-return statments 
- 
- 
-}
-
-console.log('customerStatement:', customerStatement(customers));
+  const statments = []
+  for(let i= 0;i<customers.length;i++){
+  let total = 0
+  let full = 0 
+  customers[i].invoices.reduce((acc,curr)=>{
+  total += curr.amount
+  if(curr.docStatus==='unpaid'){
+  full+= 1
+  }
+  },0)
+  
+  
+  statments.push({name:customers[i].name,totalAmount:total,fullyPaid:full<1})
+   }
+  
+   
+   return statments
+  }
+  
+  console.log('customerStatement:', customerStatement(customers));
 
 /**
  * @typedef {Object} CustomerWithPayments
