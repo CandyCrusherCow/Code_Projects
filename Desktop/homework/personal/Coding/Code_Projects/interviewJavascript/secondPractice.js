@@ -394,3 +394,171 @@ console.log('findLoves',findLoveIslandCouples(islanders))
 //const result = findLoveIslandCouples(islanders);
 //console.log(result.couples); // Shows the paired up couples
 //console.log(result.topCouple); // Shows the couple with the highest compatibility score
+
+/*
+  Problem: Dog Park Adventure
+  You're creating a simulation of a dog park where various dogs interact with each other.
+  Your task is to write a function that models the behavior of dogs in the park based on their personalities and activities.
+  You will be given an array of dog objects, each with attributes like name, breed, energy level, and favorite activity.
+  The function should simulate a day at the park by describing which dogs play together based on their favorite activities and energy levels.
+  The function should return an array of playgroups, each represented as an object with the names of the dogs in the group and their shared activity.
+  Additionally, identify the most popular activity in the park and return it as 'favoriteParkActivity'.
+  The function should return an object with two properties: 'playgroups' and 'favoriteParkActivity'.
+*/
+
+const dogs = [
+  { name: 'Maple', breed: 'Goldendoodle', energyLevel: 8, favoriteActivity: 'fetch' },
+  { name: 'Casper', breed: 'Labrador', energyLevel: 7, favoriteActivity: 'swimming' },
+  { name: 'Rika', breed: 'Golden Retriver', energyLevel: 10, favoriteActivity: 'jumping' },
+  { name: 'Peaches', breed: 'Toy Poodle', energyLevel: 3, favoriteActivity: 'sitting' }, 
+ { name: 'Goldielocks', breed: 'Goldendoodle', energyLevel: 7, favoriteActivity: 'chasing' },
+  { name: 'Benji', breed: 'Poodle', energyLevel: 6, favoriteActivity: 'chasing' }, 
+ { name: 'Blaze', breed: 'Golden Retriever', energyLevel: 2, favoriteActivity: 'sitting' },
+  { name: 'Clancy', breed: 'Poodle', energyLevel: 7, favoriteActivity: 'sitting' }, 
+{ name: 'Leon', breed: 'German Sheppard', energyLevel: 7, favoriteActivity: 'swimming' }
+  // Add more dogs as needed
+];
+
+function simulateDogPark(dogs) {
+const playgrounds = [];
+const activities = [{activity:'fetch',score:0},{activity:'swimming',score:0},{activity:'jumping',score:0},{activity:'sitting',score:0},{activity:'chasing',score:0}]
+for(let i= 0;i<dogs.length;i++){
+let matches =[]
+dogs.forEach((dog,index)=>Math.abs(dog.energyLevel - dogs[i].energyLevel)<2 && i !== index && dog.favoriteActivity === dogs[i].favoriteActivity?matches.push(dog.name):undefined);
+
+if(matches.length && playgrounds.filter((match)=>match.favoriteActivity===dogs[i].favoriteActivity).length === 0){
+playgrounds.push({name:dogs[i].name + ', '+ matches,favoriteActivity:dogs[i].favoriteActivity })
+}
+activities.forEach((activity)=>dogs[i].favoriteActivity===activity.activity?activity.score+=1:undefined)
+}
+const TopActivity = activities.sort((a,b)=> a.score -b.score)[activities.length-1].activity
+console.log(TopActivity)
+return playgrounds
+  //https://jsfiddle.net/boilerplate/responsive-css-grid#
+  // Simulate playgroups and determine the favorite park activity.
+}
+
+console.log('DOGPARK:',simulateDogPark(dogs))
+
+// Example usage:
+//const result = simulateDogPark(dogs);
+//console.log(result.playgroups); // Shows the playgroups formed at the park
+//console.log(result.favoriteParkActivity); // Shows the most popular activity in the park
+/*
+  Problem: Virtual Shopping Cart
+
+  You are building a virtual shopping cart for an e-commerce website.
+  Your task is to implement a function that models the behavior of adding items to the cart, removing items from the cart, and calculating the total price of the items in the cart.
+
+  You will be given an array of objects representing items available for purchase. Each item object will have properties like name, price, and quantity available.
+
+  You will also be given an array of objects representing items added to the cart. Each cart item object will have properties like name, price, and quantity added to the cart.
+
+*/
+
+const availableItems = [
+  { name: "Laptop", price: 999, quantity: 12 },
+  { name: "Headphones", price: 99, quantity: 15 },
+  { name: "Mouse", price: 29, quantity: 40 },
+  { name: "Phone", price: 699, quantity: 22 },
+  { name: "Tablet", price: 499, quantity: 15 },
+  { name: "Watch", price: 349, quantity: 0 },
+];
+
+const cartItems = [
+  { name: "Laptop", price: 999, quantity: 1 },
+  { name: "Headphones", price: 99, quantity: 2 },
+  // Add more cart items as needed
+];
+
+const newItems = [
+  { name: "Laptop", quantity: 5 },
+  { name: "Headphones", quantity: 3 },
+  { name: "Watch", quantity: 6 },
+];
+
+//Task 1 - Calculate total inventory value
+const totalValue = (availableItems) => {
+    let inventoryValue = 0;
+    availableItems.forEach((item)=> inventoryValue += item.price*item.quantity)
+    return inventoryValue;
+};
+console.log('total Value',totalValue(availableItems))
+
+
+// Task 2 - Provide items which have price higher than $100, sorted Descending order (10,9,8...0)
+const highValueItems = (availableItems) =>{
+   const HighestPrice =  availableItems.filter((item)=>item.price>100)
+   HighestPrice.sort((a,b)=>b.price-a.price)
+   return HighestPrice
+}
+
+console.log('HighValueItems',highValueItems(availableItems))
+
+
+//Task 3 - A new shipment of product arrives, add the items to to availableItems
+const updateInventory = (availableItems, newItems) => {
+    newItems.forEach((item)=>{
+    availableItems.forEach((element)=>{
+    if(element.name === item.name){
+    element.quantity = element.quantity + item.quantity
+    }
+    })
+    });
+    return availableItems
+}
+
+console.log('update Inventory',updateInventory(availableItems,newItems))
+
+//Task 4
+/* The function should support the following operations:
+  1. Adding items to the cart.
+  2. Removing items from the cart.
+  3. Calculating the total price of all items in the cart.
+
+  The function should return an object representing the state of the cart after performing the operations.
+
+  You can assume that items added to the cart will always have valid quantities available in the inventory. */
+const updateCart = (availableItems, cartItems, operation, itemName, quantity = 1) => {
+  if(operation === 'add'){
+  	availableItems.forEach((item)=>{
+    if(item.name===itemName&& quantity<item.quantity){
+    cartItems.push({ name:itemName, price: item.price, quantity: quantity })
+    }
+    })
+  }
+  if(operation === 'remove'){
+  cartItems.forEach((item,index)=>{
+  if(item.name === itemName){
+  if(item.quantity === 1){
+  cartItems.splice(index,1)
+  }else{item.quantity = item.quantity-1}
+  }
+  })
+  }
+  if(operation === 'total'){
+  const total =cartItems.reduce((acc,curr)=>acc+curr.price*curr.quantity,0)
+  return total
+  }
+  return cartItems
+  // Implement adding items to the cart, removing items from the cart, and calculating the total price
+};
+
+// Example usage:
+// Adding items to the cart
+const updatedCart1 = updateCart(availableItems, cartItems, "add", "Mouse", 3);
+console.log(updatedCart1);
+
+// Removing items from the cart
+const updatedCart2 = updateCart(
+  availableItems,
+  cartItems,
+  "remove",
+  "Headphones",
+  1
+);
+console.log(updatedCart2);
+
+// Calculating total price
+const totalPrice = updateCart(availableItems, cartItems, "total");
+console.log('total Price:',totalPrice);
