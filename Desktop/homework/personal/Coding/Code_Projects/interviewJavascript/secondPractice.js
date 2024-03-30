@@ -562,3 +562,94 @@ console.log(updatedCart2);
 // Calculating total price
 const totalPrice = updateCart(availableItems, cartItems, "total");
 console.log('total Price:',totalPrice);
+
+/*
+  Problem: Student Grades
+
+  You are tasked with implementing a system to manage student grades for a course.
+  Your task is to write a set of functions to perform various operations on student grades.
+
+  You will be given an array of objects representing students. Each student object will have properties like name, id, and grades.
+
+  The grades property will be an array containing the grades (numeric values) the student has received.
+
+  Your functions should support the following operations:
+
+  1. Calculate the average grade for a given student.
+  2. Calculate the average grade for the entire class.
+  3. Determine the student with the highest average grade.
+  4. Determine if any student has failed the course (average grade below 60).
+  5. Add a new grade to a student's record.
+
+  Your functions should handle edge cases such as empty arrays or missing grades for students.
+
+  Implement the functions and provide usage examples.
+*/
+
+function calculateAverageGradeForStudent(student) {
+  let sum = student.grades.reduce((acc,grade)=>acc+grade,0)
+  return sum/student.grades.length
+}
+
+function calculateAverageGradeForClass(students) {
+const grades = []
+  students.forEach((student)=>{
+    student.grades.forEach((grade)=>{
+      grades.push(grade)
+    });
+  });
+  let sum = grades.reduce((acc,grade)=>acc+grade,0)
+  return sum/grades.length
+}
+
+function studentWithHighestAverageGrade(students) {
+const Aver =[]
+  students.forEach((student,index)=>{
+  let sum = student.grades.reduce((acc,grade)=>acc+grade,0)
+  Aver.push({average:sum/student.grades.length,name:students[index].name})
+  students[index].average = sum/student.grades.length
+  });
+ // let highest = Aver.sort((a,b)=>a.average- b.average)
+ let highest = 0
+ for(let i=0;i<Aver.length;i++){
+ if(Aver[i].average>highest){
+ highest = Aver[i].average
+ }
+ }
+  return Aver.filter((A)=> A.average === highest?A.name:undefined)
+}
+
+function anyStudentFailed(students) {
+const Failures = []
+ students.forEach((student)=>student.average<60?Failures.push(student):undefined)
+ return Failures
+}
+
+function addGradeToStudent(student, grade) {
+  student.grades.push(grade)
+}
+
+// Example usage:
+const students = [
+  { name: "Alice", id: 1, grades: [85, 68, 92] },
+  { name: "Bob", id: 2, grades: [75, 80, 65] },
+  { name: "Charlie", id: 3, grades: [70, 88, 92] },
+  { name: "Saahir", id: 3, grades: [95, 92, 92] },
+  { name: "Saahir", id: 3, grades: [40, 68, 62] }
+  // Add more students as needed
+];
+
+const aliceAverageGrade = calculateAverageGradeForStudent(students[0]);
+console.log("Alice's average grade:", aliceAverageGrade);
+
+const classAverageGrade = calculateAverageGradeForClass(students);
+console.log("Class average grade:", classAverageGrade);
+
+const studentWithHighestAvg = studentWithHighestAverageGrade(students);
+console.log("Student with highest average grade:", studentWithHighestAvg);
+
+const anyFailed = anyStudentFailed(students);
+console.log("Any student failed?", anyFailed);
+
+addGradeToStudent(students[0], 88);
+console.log("Alice's grades after adding a new grade:", students[0].grades);
