@@ -381,6 +381,7 @@ obj.invoices.map((invoice)=>{
 
 console.log('applyPayment:', applyPayment(customers, payments));
 
+
 // function applyPayment(customers,payments){
 //   const custWithPay =[];
 //   customers.forEach((obj)=>{
