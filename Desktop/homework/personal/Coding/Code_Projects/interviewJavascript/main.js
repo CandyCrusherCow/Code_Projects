@@ -334,7 +334,7 @@ function customerStatement(customers){
    return statments
   }
   
-  console.log('customerStatement:', customerStatement(customers));=
+  console.log('customerStatement:', customerStatement(customers))
 
 /**
  * @typedef {Object} CustomerWithPayments
